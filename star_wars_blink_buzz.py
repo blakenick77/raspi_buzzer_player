@@ -44,7 +44,7 @@ import time
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-# Set pins 18, 23 and 24 to be output
+# Set pins 18, 23 and 24 to be output for LED
 GPIO.setup(18, GPIO.OUT)
 GPIO.setup(23, GPIO.OUT)
 GPIO.setup(24, GPIO.OUT)
@@ -248,17 +248,17 @@ def buzz(frequency, length):     #create the function "buzz" and feed it the pit
     delayValue = period / 2      #calcuate the time for half of the wave
     numCycles = int(length * frequency)  #the number of waves to produce is the duration times the frequency
     
-    for i in range(numCycles):      #start a loop from 0 to the variable "cycles" calculated above
-        GPIO.output(buzzer_pin, True)    #set pin 22 to high
-        GPIO.output(23, GPIO.HIGH)
+    for i in range(numCycles):          #start a loop from 0 to the variable "cycles" calculated above
+        GPIO.output(buzzer_pin, True)   #set pin 22 to high
+        GPIO.output(23, GPIO.HIGH)      # LED On with buzzer
         GPIO.output(18, GPIO.HIGH)
         GPIO.output(24, GPIO.HIGH)
-        time.sleep(delayValue)      #wait with pin 22 high
-        GPIO.output(buzzer_pin, False)      #set pin 22 to low
-        GPIO.output(23, GPIO.LOW)
+        time.sleep(delayValue)          #wait with pin 22 high
+        GPIO.output(buzzer_pin, False)  #set pin 22 to low
+        GPIO.output(23, GPIO.LOW)       # LED Off with buzzer
         GPIO.output(18, GPIO.LOW)
         GPIO.output(24, GPIO.LOW)
-        time.sleep(delayValue)      #wait with pin 22 low
+        time.sleep(delayValue)          #wait with pin 22 low
     
 
 def setup():
